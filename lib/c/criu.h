@@ -116,6 +116,7 @@ void criu_set_pidfd_store_sk(int sk);
 int criu_set_network_lock(enum criu_network_lock_method method);
 int criu_join_ns_add(const char *ns, const char *ns_file, const char *extra_opt);
 void criu_set_mntns_compat_mode(bool val);
+void criu_set_encrypt(bool encrypt);
 
 /*
  * The criu_notify_arg_t na argument is an opaque
@@ -293,7 +294,7 @@ int criu_local_dump_iters(criu_opts *opts, int (*more)(criu_predump_info pi));
 
 int criu_local_get_version(criu_opts *opts);
 int criu_local_check_version(criu_opts *opts, int minimum);
-
+void criu_local_set_encrypt(criu_opts *opts, bool encrypt);
 /*
  * Feature checking allows the user to check if CRIU supports
  * certain features. There are CRIU features which do not depend

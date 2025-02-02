@@ -431,6 +431,17 @@ void criu_set_leave_running(bool leave_running)
 	criu_local_set_leave_running(global_opts, leave_running);
 }
 
+void criu_local_set_encrypt(criu_opts *opts, bool encrypt)
+{
+	opts->rpc->has_encrypt= true;
+	opts->rpc->encrypt = encrypt;
+}
+
+void criu_set_encrypt(bool encrypt)
+{
+	criu_local_set_encrypt(global_opts, encrypt);
+}
+
 void criu_local_set_ext_unix_sk(criu_opts *opts, bool ext_unix_sk)
 {
 	opts->rpc->has_ext_unix_sk = true;
