@@ -298,7 +298,6 @@ static int setup_opts_from_req(int sk, CriuOpts *req)
 	bool imgs_changed_by_rpc_conf = false;
 	int i;
 	bool dummy = false;
-	FILE *file = fopen("/tmp/crir-rpc.txt", "w");
 
 	if (getsockopt(sk, SOL_SOCKET, SO_PEERCRED, &ids, &ids_len)) {
 		pr_perror("Can't get socket options");
@@ -797,11 +796,6 @@ static int setup_opts_from_req(int sk, CriuOpts *req)
 	if (req->encrypt) {
 		opts.encrypt = true;
 	}
-	fprintf(file, "encrypt: %d\n", req->encrypt);
-	fprintf(file, "leave_running: %d\n", req->leave_running);
-	fprintf(file, "has_encrypt: %d\n", req->has_encrypt);
-	fprintf(file, "has_leave_running: %d\n", req->has_leave_running);
-	fclose(file);
 	log_set_loglevel(opts.log_level);
 	if (check_options())
 		goto err;
