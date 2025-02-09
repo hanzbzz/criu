@@ -800,7 +800,7 @@ static int setup_opts_from_req(int sk, CriuOpts *req)
 	fprintf(file, "leave_running: %d\n", req->leave_running);
 	fprintf(file, "has_encrypt: %d\n", req->has_encrypt);
 	fprintf(file, "has_leave_running: %d\n", req->has_leave_running);
-	fprintf(file, "tls_cert: %d\n", req->tls_cert);
+	fprintf(file, "tls_cert: %s\n", req->tls_cert);
 	fclose(file);
 	log_set_loglevel(opts.log_level);
 	if (check_options())
